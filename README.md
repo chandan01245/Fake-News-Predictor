@@ -1,242 +1,142 @@
-# 📰 Fake News Predictor
+## 📰 Fake News Predictor
 
-A Machine Learning project that predicts whether a given news article is **Fake** or **Real** using **Natural Language Processing (NLP)** techniques and **Logistic Regression**.
+A Machine Learning project that predicts whether a given news article is **Fake** or **Real** using Natural Language Processing (NLP) and Logistic Regression.
+
+> NOTE: This `README.md` was merged with `README_NEW.md` on 2025-11-07 to combine reorganization notes and quick-start instructions. `README_NEW.md` is preserved for reference.
 
 ---
 
-## ✨ NEW: Fancy Web UI Available! 🎉
+## 🚀 Quick Start (Windows - PowerShell)
 
-Now you can use a beautiful web interface to detect fake news with just a few clicks!
+1. Activate the virtual environment:
 
-### 🚀 Quick Start - Web UI
-```bash
-# Windows users - Just double-click:
-run.bat
-
-# Or manually:
-.\Virtual-env\Scripts\activate
-pip install -r requirements.txt
-python app.py
+```powershell
+.\Virtual-env\Scripts\Activate.ps1
 ```
 
-Then open: **http://localhost:7860** in your browser!
+2. Install dependencies:
 
-📖 **Detailed Guide**: See [RUN_APP.md](RUN_APP.md) for complete instructions
+```powershell
+pip install -r requirements.txt
+```
+
+3. Run the web app (choose the command that matches your layout):
+
+```powershell
+# If app.py is in the repository root
+python app.py
+# Or, for the reorganized layout
+python src\web\app.py
+```
+
+Open http://localhost:7860 in your browser.
+
+For macOS / Linux use:
+
+```bash
+source Virtual-env/bin/activate
+pip install -r requirements.txt
+python src/web/app.py
+```
+
+Detailed web UI instructions: see `docs/RUN_APP.md`.
 
 ---
 
-## 🌐 Alternative: Try It on Google Colab
-You can also run the Jupyter notebook directly on Colab:  
-👉 [**Open in Google Colab**](https://colab.research.google.com/drive/1V6HJIv7YEMOU61c6fuJ3apxpNNTHCjes?usp=sharing)
-
----
-
-## 📁 Project Structure
+## 📁 Project structure (overview)
 
 ```text
 Fake-News-Predictor/
-├── app.py                    # 🌟 NEW: Gradio Web UI Application
-├── run.bat                   # 🌟 NEW: Quick start script for Windows
-├── RUN_APP.md               # 🌟 NEW: Detailed web UI guide
-├── data/                     # Folder to store raw Kaggle dataset
-│   ├── True.csv
-│   └── Fake.csv
-├── models/                   # 🌟 NEW: Saved ML models (auto-created)
-│   ├── model.pkl
-│   └── vectorizer.pkl
-├── processed/                # Folder for processed datasets (for notebook)
-│   ├── train.csv
-│   ├── test.csv
-│   └── valid.csv
-├── FakeNewsPredictor.ipynb  # Jupyter / Colab notebook for model training
-├── requirements.txt          # Python dependencies (now includes Gradio!)
-├── Virtual-env/              # Python virtual environment
-├── .gitignore               
-└── README.md
+├── src/                # Source: web app, models, utils
+├── scripts/            # Training & helper scripts
+├── docs/               # Documentation (GETTING_STARTED, RUN_APP, etc.)
+├── data/               # Raw datasets (True.csv, Fake.csv)
+├── processed/          # Processed datasets
+├── models/             # Saved model artifacts
+├── notebooks/          # Jupyter notebooks
+├── requirements.txt
+├── README.md
+└── README_NEW.md       # Kept for reference
+```
 
+---
 
-## ⚙️ Installation & Setup
+## ⚙️ Installation & setup (summary)
 
-### 🎨 Option 1: Web UI (Recommended for Beginners)
+1. Clone the repository:
 
-1️⃣ **Clone the Repository**
 ```bash
-git clone https://github.com/Madhu-014/Fake-News-Predictor.git
-cd Fake-News-Predictor
+git clone <repo-url>
+cd <repo-dir>
 ```
 
-2️⃣ **Activate Virtual Environment**
+2. Activate environment and install dependencies (see Quick Start above).
 
-**Windows:**
-```bash
-.\Virtual-env\Scripts\activate
+3. Download the dataset from Kaggle and place `True.csv` and `Fake.csv` into the `data/` directory.
+
+4. Train the model (optional):
+
+```powershell
+python scripts\train_ultra_fast.py
+python scripts\train_fast.py
 ```
 
-**macOS / Linux:**
-```bash
-source Virtual-env/bin/activate
-```
+---
 
-3️⃣ **Install Dependencies**
-```bash
-pip install -r requirements.txt
-```
+## 🌐 Run on Google Colab
 
-4️⃣ **Download Dataset** (See below) and place in `data/` folder
+Open the training notebook in Colab:
 
-5️⃣ **Run the Web UI**
-```bash
-python app.py
-```
-
-Open **http://localhost:7860** in your browser! 🎉
+[Open in Google Colab](https://colab.research.google.com/drive/1V6HJIv7YEMOU61c6fuJ3apxpNNTHCjes?usp=sharing)
 
 ---
 
-### 📓 Option 2: Jupyter Notebook
+## 🎯 Features
 
-Follow steps 1-4 above, then:
-```bash
-jupyter notebook FakeNewsPredictor.ipynb
-```
-## 📊 Dataset
-
-The dataset used in this project comes from Kaggle:  
-🔗 [Fake News Detection Datasets by Emine YETMİŞ](https://www.kaggle.com/datasets/emineyetm/fake-news-detection-datasets)
-
-### Steps to Download:
-
-1. Visit the Kaggle link above
-2. Click **Download** to get the ZIP file
-3. Extract it and move the following two files into the `data/` folder:
-
-```text
-data/
-├── True.csv
-└── Fake.csv
-```
-
-✅ **You are all set!** Now you can:
-- Run the **Web UI** to train and use the model with a beautiful interface
-- Or use the **Jupyter Notebook** for detailed analysis
+- Gradio Web UI with real-time predictions and confidence scores
+- TF-IDF vectorization + Logistic Regression classifier
+- Fast / ultra-fast training scripts
+- Modular code layout for maintainability
 
 ---
 
-## 🎯 Features of the Web UI
+## 🛠️ Technology stack
 
-✨ **Beautiful Gradio Interface**
-- 🎨 Modern, intuitive design
-- 📱 Mobile-friendly
-- 🌙 Dark mode support
-
-🔍 **Smart Predictions**
-- Real-time analysis
-- Confidence scores
-- Detailed probability breakdown
-- Sample articles for testing
-
-🎓 **Easy Training**
-- One-click model training
-- Progress tracking
-- Save/load trained models
-
-📊 **Interactive Results**
-- Visual prediction display
-- Detailed statistics
-- Recommendation messages
+- Frontend: Gradio
+- ML: scikit-learn
+- NLP: NLTK
+- Language: Python 3.7+
 
 ---
 
-## 🖼️ Web UI Screenshots
+## 📈 Model performance (reported)
 
-### Main Detection Interface
-- Paste any news article
-- Get instant results
-- See confidence scores
+- Training accuracy: ~99%
+- Test accuracy: ~98%
 
-### Training Dashboard
-- Train with your dataset
-- View accuracy metrics
-- Save models for later use
-
-### About Section
-- Learn how it works
-- Understand the technology
-- View project information
+Results depend on dataset and training configuration.
 
 ---
 
-## 🛠️ Technology Stack
+## 🎓 How it works (high level)
 
-- **Frontend**: Gradio (Beautiful Web UI)
-- **ML Framework**: Scikit-learn
-- **NLP**: NLTK (Natural Language Toolkit)
-- **Backend**: Python 3.7+
-- **Vectorization**: TF-IDF
-- **Algorithm**: Logistic Regression
-
----
-
-## 📈 Model Performance
-
-The model achieves high accuracy on the test dataset:
-- **Training Accuracy**: ~99%
-- **Test Accuracy**: ~98%
-
-*Results may vary based on dataset and training parameters*
+1. Text preprocessing (cleaning, lowercasing)
+2. Stopword removal / optional stemming
+3. TF-IDF vectorization
+4. Train Logistic Regression classifier
+5. Serve predictions via Gradio web UI
 
 ---
 
-## 🎓 How It Works
+## 🔧 Contributing
 
-1. **Text Preprocessing**: Remove special characters, convert to lowercase
-2. **Stemming**: Reduce words to their root form
-3. **Stopword Removal**: Remove common words that don't add meaning
-4. **TF-IDF Vectorization**: Convert text to numerical features
-5. **Logistic Regression**: Train classifier to predict fake/real
-6. **Prediction**: Analyze new articles with confidence scores
-
----
-
-## 💡 Usage Tips
-
-### For Best Results:
-- Include both **title** and **full article text**
-- Use **original article content** (not summaries)
-- Model works best with **English** articles
-- Longer articles generally give better predictions
-
-### Web UI Tips:
-- Try the example buttons to see how it works
-- Train the model once, use it multiple times
-- Check the "About" tab for detailed information
-- Confidence score shows prediction reliability
-
----
-
-## 🚨 Disclaimer
-
-This tool provides predictions based on patterns learned from training data. It should be used as a **supplementary tool** and not as the sole method for verifying news authenticity. Always:
-- Verify information from multiple reliable sources
-- Check the original source of the article
-- Be critical of sensational claims
-- Use fact-checking websites
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest new features
-- Improve documentation
-- Submit pull requests
+Contributions welcome. Please follow project structure, add tests, update docs, and submit pull requests.
 
 ---
 
 ## 📝 License
 
-This project is open source and available for educational purposes.
+Open source — available for educational purposes.
 
 ---
 
@@ -246,18 +146,10 @@ Built with ❤️ using Machine Learning and NLP
 
 ---
 
-## 🔗 Links
+## 🔗 Useful links
 
-- 🌐 **Web UI**: Run locally with `python app.py`
-- 📓 **Colab**: [Try Online](https://colab.research.google.com/drive/1V6HJIv7YEMOU61c6fuJ3apxpNNTHCjes?usp=sharing)
-- 📊 **Dataset**: [Kaggle Link](https://www.kaggle.com/datasets/emineyetm/fake-news-detection-datasets)
-- 📖 **Guide**: See [RUN_APP.md](RUN_APP.md) for detailed instructions
-
----
-
-## ⭐ Show Your Support
-
-If you find this project useful, please give it a ⭐ on GitHub!
+- Docs: `docs/` folder (see `docs/RUN_APP.md`)
+- Notebook (Colab): link above
 
 ---
 
