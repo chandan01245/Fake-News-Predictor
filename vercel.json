@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "src/web/app.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "preBuild": "powershell -Command \"Remove-Item -Recurse -Force Virtual-env\""
+      }
     }
   ],
   "routes": [
