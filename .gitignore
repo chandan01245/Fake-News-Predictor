@@ -9,6 +9,7 @@ Place this in the root of your repository.
 # Virtual environment
 venv/
 .env/
+Virtual-env/
 
 # Python cache
 __pycache__/
