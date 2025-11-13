@@ -15,7 +15,6 @@ __pycache__/
 *.pyc
 
 # Data folders
-data/
 processed/
 *.csv
 *.zip
@@ -24,7 +23,6 @@ processed/
 .ipynb_checkpoints/
 
 # Model files
-*.pkl
 *.h5
 *.pt
 *.joblib
@@ -39,3 +37,6 @@ processed/
 # Colab & Jupyter outputs
 *.log
 *.out
+
+# Vercel
+.vercel/
