@@ -365,6 +365,9 @@ if os.path.exists('models/model.pkl') and os.path.exists('models/vectorizer.pkl'
 else:
     print("⚠️ No trained model found. Please train the model first.")
 
+# Queue the app for async processing (required for ASGI servers)
+demo.queue()
+
 # Export the app for ASGI servers (Uvicorn, Gunicorn with uvicorn workers)
 app = demo
 
