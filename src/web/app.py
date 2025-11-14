@@ -1,4 +1,4 @@
-"""
+`"""
 Fake News Predictor - Fancy Web UI
 A beautiful Gradio interface for detecting fake news articles
 """
@@ -242,7 +242,7 @@ with gr.Blocks(theme=gr.themes.Soft(), title="🔍 Fake News Detector") as app:
                     
                     with gr.Row():
                         predict_btn = gr.Button("🔍 Analyze Article", variant="primary", size="lg")
-                        clear_btn = gr.ClearButton([news_input], value="🗑️ Clear")
+                        clear_btn = gr.Button("🗑️ Clear", size="lg")
                     
                     gr.Markdown("### Try these examples:")
                     with gr.Row():
@@ -260,6 +260,11 @@ with gr.Blocks(theme=gr.themes.Soft(), title="🔍 Fake News Detector") as app:
                 fn=predict_news,
                 inputs=[news_input],
                 outputs=[result_output, details_output, confidence_gauge, message_output]
+            )
+            
+            clear_btn.click(
+                fn=lambda: ("", "", "", 0.0),
+                outputs=[news_input, result_output, details_output, confidence_gauge]
             )
             
             example1_btn.click(lambda: sample_fake, outputs=[news_input])
