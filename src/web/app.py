@@ -1,4 +1,4 @@
-`"""
+"""
 Fake News Predictor - Fancy Web UI
 A beautiful Gradio interface for detecting fake news articles
 """
