@@ -1,4 +1,4 @@
-`"""
+"""
 Fake News Predictor - Fancy Web UI
 A beautiful Gradio interface for detecting fake news articles
 """
@@ -217,7 +217,7 @@ forward in international cooperation on climate change. Scientists and environme
 the agreement while noting that implementation will be challenging."""
 
 # Create Gradio Interface
-with gr.Blocks(theme=gr.themes.Soft(), title="🔍 Fake News Detector") as app:
+with gr.Blocks(theme=gr.themes.Soft(), title="🔍 Fake News Detector") as demo:
     
     gr.Markdown("""
     # 🔍 Fake News Predictor
@@ -365,8 +365,11 @@ if os.path.exists('models/model.pkl') and os.path.exists('models/vectorizer.pkl'
 else:
     print("⚠️ No trained model found. Please train the model first.")
 
+# Export the app for ASGI servers (Uvicorn, Gunicorn with uvicorn workers)
+app = demo
+
 if __name__ == "__main__":
-    app.launch(
+    demo.launch(
         share=False,
         server_name="0.0.0.0",
         server_port=7860,
